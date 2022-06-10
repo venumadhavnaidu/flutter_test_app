@@ -34,3 +34,35 @@ jobs:
            env:
               FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
    
+    container:
+       name: Ghcr docker Image build
+       needs: hosting
+       runs-on: ubuntu-latest
+       steps:
+         - name: Checkout Repo
+           uses: actions/checkout@master
+       
+         - name: creating container env
+           uses: docker/setup-buildx-action@v1
+         - name: docker login 
+           uses: docker/login-action@v1
+           env:
+              GIT_USER: ${{ github.actor}}
+              GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+           with:
+            registry: ghcr.io
+            username: $env.GIT_USER
+            password: ${{ env.GIT_TOKEN }}
+         - name: build & publish docker image
+           uses: docker/build-push-action@v2
+           env: 
+              REGISTRY: ghcr.io
+           with:
+            context: .
+            file: ./Dockerfile
+            push: true
+            tags: ${{ env.REGISTRY }}/${{ github.repository }}/flutter:1
+        
+         - name: listing images
+           run: 
+             docker images
