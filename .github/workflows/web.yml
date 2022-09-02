@@ -21,19 +21,19 @@ jobs:
             flutter build web
 
     
-    deploy:
-        name: Deploy
-        needs: hosting
-        runs-on: ubuntu-latest
-        steps:
-         - name: Checkout Repo
-           uses: actions/checkout@master
-         - name: Deploy to Firebase
-           uses: w9jds/firebase-action@master
-           with:
-              args: deploy --only hosting:flutter-webhost
-           env:
-              FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+   # deploy:
+   #     name: Deploy
+   #     needs: hosting
+   #     runs-on: ubuntu-latest
+   #     steps:
+   #      - name: Checkout Repo
+   #        uses: actions/checkout@master
+   #      - name: Deploy to Firebase
+   #        uses: w9jds/firebase-action@master
+   #        with:
+   #           args: deploy --only hosting:flutter-webhost
+   #        env:
+   #           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
    
     container:
        name: Ghcr docker Image build
