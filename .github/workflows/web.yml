@@ -1,5 +1,6 @@
 name: Build and Release flutter based webapp
-on: push
+on: 
+  workflow_dispatch: {}
 jobs:
     hosting:
       name: FLutter web app build
