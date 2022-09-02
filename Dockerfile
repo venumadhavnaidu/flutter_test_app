@@ -1,4 +1,4 @@
-FROM ubuntu-18.04
+FROM ubuntu:18.04
 #COPY build/web /usr/local/tomcat/webapps/web
 RUN  apt-get update -y  wget git curl zip unzip tar \
      apt-get install  ca-certificates curl gnupg lsb-release -y \ 
