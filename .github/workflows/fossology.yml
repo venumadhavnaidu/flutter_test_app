@@ -1,14 +1,11 @@
 name: Fossology
 on:
   workflow_dispatch: {}
-  push:
-   branches:
-     - master
 
 jobs:
   license_check_job: 
     name: license_check
-    runs-on: docker-dind
+    runs-on: docker-20.10.17-dind
     container: ghcr.io/project332/flutter_test_app/flutter:1
     steps: 
      - name: SCS TypeScript SDK  Checkout
