@@ -9,17 +9,7 @@ jobs:
     container: ghcr.io/project332/flutter_test_app/flutter:1
     steps: 
      - name:  Checkout
-       uses: actions/checkout@v1
-     # Install Flutter command
-     - uses: subosito/flutter-action@v1
-       with:
-            channel: 'dev'
-
-     # Build Website
-     - name: Build Website
-       run: |
-            flutter config --enable-web
-            flutter build web
+       uses: actions/checkout@master
      # docker instalation
      - name: docker configuration
        run: | 
