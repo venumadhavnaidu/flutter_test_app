@@ -8,8 +8,7 @@ jobs:
     runs-on: ubuntu-18.04
     container: ghcr.io/project332/flutter_test_app/flutter:1
     steps: 
-     - name:  Checkout
-       uses: actions/checkout@v2
+     - uses: actions/checkout@v1
        
      # FOSSOLOGY
      - name: fossology report 
