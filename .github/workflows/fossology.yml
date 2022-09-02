@@ -1,0 +1,32 @@
+name: Fossology
+on:
+  workflow_dispatch: {}
+  push:
+   branches:
+     - master
+
+jobs:
+  license_check_job: 
+    name: license_check
+    runs-on: docker-dind
+    container: ghcr.io/project332/flutter_test_app/flutter:1
+    steps: 
+     - name: SCS TypeScript SDK  Checkout
+       uses: actions/checkout@v2
+     # webapp  build
+      # Install Flutter command
+     - uses: subosito/flutter-action@v1
+       with:
+            channel: 'dev'
+
+     # Build Website
+     - name: Build Website
+       run: |
+            flutter config --enable-web
+            flutter build web
+     # FOSSOLOGY
+     - name: fossology report 
+       run:   docker run --rm -v /home/runner/work/flutter_testing_app/flutter_testing_app:/project fossology/atarashi:latest -a DLD  /project/
+      
+   
+       
