@@ -4,7 +4,7 @@ on:
 jobs:
     hosting:
       name: FLutter web app build
-      runs-on: ubuntu-latest
+      runs-on: ubuntu-18.04
       steps:
         # Checkout Repository
         - uses: actions/checkout@v1
@@ -38,7 +38,7 @@ jobs:
     container:
        name: Ghcr docker Image build
        needs: hosting
-       runs-on: ubuntu-latest
+       runs-on: ubuntu-18.04
        steps:
          - name: Checkout Repo
            uses: actions/checkout@master
