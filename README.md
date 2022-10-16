@@ -3,7 +3,7 @@
 A Sample app that shows different types of testing in Flutter.
 
 This particular sample uses the [Provider][] package but any other state management approach
-would do.
+would do.just
 
 [provider]: https://pub.dev/packages/provider
 
